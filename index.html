@@ -470,7 +470,7 @@ Redshift Cassandra  Intelij  MySQL
                         <textarea rows="10" cols="100" class="form-control" id="message" placeholder="Message" required=""></textarea>
                     </div>
                 </div>
-				<button type="submit" class="btn btn-primary" onclick="sendEmail()">Send Message</button>
+				<button type="submit"  id="sendEmail" class="btn btn-primary" >Send Message</button>
             </form>
 		</div>
 		<div class="col-lg-6 col-md-6 col-sm-6 comment-agile2" data-aos="flip-right">
@@ -560,16 +560,30 @@ Redshift Cassandra  Intelij  MySQL
 
 <!-- scrolling script -->
 <script type="text/javascript">
-    function sendEmail(){
-		var name =document.getElementById("name").value;
-		var email =document.getElementById("email").value;
-		var phone =document.getElementById("phone").value;
-		var message =document.getElementById("message").value;
-		console.log(name+ " " + email + " " + phone + " "+message);
+
+ $("#sendEmail").click(function(){
+var arr = {};
+arr["from_name"] =document.getElementById("name").value;
+arr["from"]=document.getElementById("email").value;
+
+arr["content"] =document.getElementById("message").value;
+arr["to"] = "subham2126@gmail.com"
+arr["subject"] = "Query from subham2126.github.io" + document.getElementById("phone").value;
+ 
+$.ajax({
+    url: 'http://subham2126.pythonanywhere.com/send',
+    type: 'POST',
+    data: JSON.stringify(arr),
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    async: false,
+    success: function(msg) {
+        alert(msg);
+    }
+});
+});
 
 
-		
-	}
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){		
 			event.preventDefault();
