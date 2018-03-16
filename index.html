@@ -461,7 +461,7 @@ Redshift Cassandra  Intelij  MySQL
                 </div>
 				<div class="control-group form-group">
                     <div class="controls">
-                        <input type="text" class="form-control" id="name1" placeholder="Phone Number" required="">
+                        <input type="text" class="form-control" id="phone" placeholder="Phone Number" required="">
 						<p class="help-block"></p>
 					</div>
                 </div>
@@ -470,7 +470,7 @@ Redshift Cassandra  Intelij  MySQL
                         <textarea rows="10" cols="100" class="form-control" id="message" placeholder="Message" required=""></textarea>
                     </div>
                 </div>
-				<button type="submit" class="btn btn-primary">Send Message</button>
+				<button type="submit" class="btn btn-primary" onclick="sendEmail()">Send Message</button>
             </form>
 		</div>
 		<div class="col-lg-6 col-md-6 col-sm-6 comment-agile2" data-aos="flip-right">
@@ -560,12 +560,24 @@ Redshift Cassandra  Intelij  MySQL
 
 <!-- scrolling script -->
 <script type="text/javascript">
+    function sendEmail(){
+		var name =document.getElementById("name").value;
+		var email =document.getElementById("email").value;
+		var phone =document.getElementById("phone").value;
+		var message =document.getElementById("message").value;
+		console.log(name+ " " + email + " " + phone + " "+message);
+
+
+		
+	}
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){		
 			event.preventDefault();
 			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 		});
 	});
+
+	
 </script> 
 <!-- //scrolling script -->
 	
